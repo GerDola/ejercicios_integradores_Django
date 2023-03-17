@@ -15,8 +15,8 @@ def mcd(a, b):
 
 
 print("Función de cálculo de MCD (máximo común divisor)")
+
 a = int(input("Ingrese el primer número: "))
 b = int(input("Ingrese el segundo número: "))
 
-print("El máximo común divisor entre " + str(a) +
-      " y " + str(b) + " es: " + str(mcd(a, b)))
+print(f"El máximo común divisor entre {a} y {b} es: {mcd(a, b)}")
