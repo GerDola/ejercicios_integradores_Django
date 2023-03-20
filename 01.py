@@ -1,5 +1,3 @@
-# Escribir una función que calcule el máximo común divisor entre dos números.
-
 def mcd(a, b):
     mcd = 1
 

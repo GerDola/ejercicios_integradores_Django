@@ -1,9 +1,7 @@
-# Escribir un programa que reciba una cadena de caracteres y devuelva un diccionario con cada palabra que contiene y la contidad de veces que aparece (frecuencia).
-
 print("Programa para contar palabras y frecuencia")
 cadena = str(input("Ingrese un texto: "))
 
-remover = ".,:;¿?=/#%\n¡!\"'"
+remover = ".,:;¿?=/#%()&$\n¡!\"'"
 for caracter in remover:
     cadena = cadena.replace(caracter, "")
 

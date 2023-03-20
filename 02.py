@@ -1,5 +1,3 @@
-# Escribir una función que calcule el mínimo común múltiplo entre dos números.
-
 def mcm(a, b):
     i = max(a, b)
 
