@@ -72,8 +72,9 @@ class Persona():
 nombre = input('Ingrese el Nombre: ')
 edad = input('Ingrese la Edad: ')
 dni = input('Ingrese el DNI: ')
-
+print('*************************************')
 a = Persona(nombre, edad, dni)
-
+print('*************************************')
 print(a.mostrar())
 print(a.es_mayor_de_edad())
+print('*************************************')
