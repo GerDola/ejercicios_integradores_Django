@@ -3,9 +3,9 @@ import re
 
 class Persona():
     def __init__(self, nombre="", edad="", dni=""):
-        self.nombre = nombre
-        self.edad = edad
-        self.dni = dni
+        self.__nombre = nombre
+        self.__edad = edad
+        self.__dni = dni
 
     @property
     def nombre(self):
@@ -45,6 +45,7 @@ class Persona():
     @dni.setter
     def dni(self, valor):
         try:
+            valor = str(valor)
             if len(valor) < 9 and len(valor) > 6:
                 valor = int(valor)
                 self.__dni = valor
@@ -71,8 +72,8 @@ class Persona():
 
 class Cuenta():
 
-    def __init__(self, titular, cantidad=0):
-        self.titular = titular(Persona)
+    def __init__(self, titular, cantidad=0.0):
+        self.titular = Persona(titular.nombre, titular.edad, titular.dni)
         self.cantidad = cantidad
 
     @property
@@ -92,7 +93,7 @@ class Cuenta():
         self.__cantidad = cantidad
 
     def mostrar(self):
-        return f"Datos de la Cuenta:\nTitular: {self.titular}\nCantidad en cuenta: $ {str(self.cantidad)}"
+        return f"Información de la Cuenta:\nTitular: {self.titular.nombre.capitalize()}\nSaldo en cuenta: $ {self.cantidad}"
 
     def ingresar(self, cantidad):
         if cantidad > 0:
@@ -104,14 +105,22 @@ class Cuenta():
 
 
 persona = Persona('german', 33, 12345678)
+print('****************************************************')
 
-cuenta = Cuenta(Persona, 2000)
+cuenta = Cuenta(persona, 2000)
 print(cuenta.mostrar())
+print('****************************************************')
 
 deposito = 1000
 cuenta.ingresar(deposito)
 print(cuenta.mostrar())
+print(
+    f"El cliente {persona.nombre.capitalize()} deposito: $ {deposito} Saldo: $ {cuenta.cantidad}")
+print('****************************************************')
 
 extraccion = 3000
 cuenta.retirar(extraccion)
 print(cuenta.mostrar())
+print(
+    f"El cliente {persona.nombre.capitalize()} retiro: $ {extraccion} Saldo: $ {cuenta.cantidad}")
+print('****************************************************')
