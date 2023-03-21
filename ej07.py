@@ -32,8 +32,7 @@ class Persona():
     @edad.setter
     def edad(self, valor):
         try:
-            #valor = int(valor)
-            if int(valor) > 0 and int(valor) < 100:
+            if int(valor) >= 0 and int(valor) < 100:
                 self.__edad = valor
                 return print('Edad Ingresada correctamente')
             else:
@@ -70,11 +69,49 @@ class Persona():
         return f'Nombre: {self.nombre}, Edad: {self.edad}, DNI: {self.dni}'
 
 
-nombre = input('Ingrese el Nombre: ')
-edad = input('Ingrese la Edad: ')
-dni = input('Ingrese el DNI: ')
+class Cuenta():
 
-a = Persona(nombre, edad, dni)
+    def __init__(self, titular, cantidad=0):
+        self.titular = titular(Persona)
+        self.cantidad = cantidad
 
-print(a.mostrar())
-print(a.es_mayor_de_edad())
+    @property
+    def titular(self):
+        return self.__titular
+
+    @property
+    def cantidad(self):
+        return self.__cantidad
+
+    @titular.setter
+    def titular(self, valor):
+        self.__titular = valor
+
+    @cantidad.setter
+    def cantidad(self, cantidad):
+        self.__cantidad = cantidad
+
+    def mostrar(self):
+        return f"Datos de la Cuenta:\nTitular: {self.titular}\nCantidad en cuenta: $ {str(self.cantidad)}"
+
+    def ingresar(self, cantidad):
+        if cantidad > 0:
+            self.cantidad += cantidad
+
+    def retirar(self, cantidad):
+        if cantidad > 0:
+            self.cantidad -= cantidad
+
+
+persona = Persona('german', 33, 12345678)
+
+cuenta = Cuenta(Persona, 2000)
+print(cuenta.mostrar())
+
+deposito = 1000
+cuenta.ingresar(deposito)
+print(cuenta.mostrar())
+
+extraccion = 3000
+cuenta.retirar(extraccion)
+print(cuenta.mostrar())
